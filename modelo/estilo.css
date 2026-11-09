@@ -1,0 +1,217 @@
+/* Natalia Scarpati — estilo do site
+   Conceito: catálogo de pedra. Fundo mineral frio, tipografia Bodoni para os nomes
+   das peças (eco do Art Déco citado no Orbe), ficha técnica em mono.
+   A foto de cada peça vira um círculo ao passar o mouse: o corte circular é a
+   assinatura do trabalho. */
+
+:root {
+  --fundo: #ECEDE9;
+  --tinta: #1B1E1B;
+  --suave: #5C635D;
+  --linha: #C8CCC5;
+  --pedra: #DDE0DA;
+  --vinho: #6B1E2A;
+
+  --f-titulo: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --f-texto: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-ficha: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --margem: clamp(16px, 3.2vw, 48px);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #121412;
+    --tinta: #E5E7E2;
+    --suave: #99A199;
+    --linha: #2D322D;
+    --pedra: #1C201C;
+    --vinho: #D07A86;
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--tinta);
+  font: 400 1rem/1.6 var(--f-texto);
+  padding-left: max(var(--margem), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--margem), env(safe-area-inset-right, 0px));
+}
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { color: var(--vinho); }
+:focus-visible { outline: 2px solid var(--vinho); outline-offset: 3px; }
+h1, h2 { margin: 0; font-weight: 400; text-wrap: balance; }
+p { margin: 0; }
+
+/* ---- topo */
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-block: 1.5rem 1rem;
+}
+.marca {
+  font: 400 1.5rem/1 var(--f-titulo);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.menu { display: flex; gap: 1.5rem; }
+.menu a {
+  font: 400 0.75rem/1 var(--f-ficha);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+.menu a[aria-current="page"] { text-decoration: underline; }
+
+/* ---- abertura */
+.abertura { padding-block: clamp(3rem, 10vw, 8rem) clamp(2.5rem, 6vw, 5rem); display: grid; gap: 1.5rem; }
+.abertura-frase {
+  font: 400 clamp(2.1rem, 6.2vw, 5.4rem)/1.04 var(--f-titulo);
+  max-width: 15ch;
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+}
+.abertura-dados, .ano-rotulo, .cartao-tipo, .ficha dt, .vizinhos span, .voltar, .rodape {
+  font-family: var(--f-ficha);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--suave);
+}
+
+/* ---- índice por ano */
+.indice { display: grid; gap: clamp(2.5rem, 5vw, 4rem); padding-bottom: 5rem; }
+.ano {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1.5rem;
+  border-top: 1px solid var(--linha);
+  padding-top: 1rem;
+}
+.ano-rotulo { font-weight: 400; position: sticky; top: 1rem; align-self: start; }
+.grade {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 1.75rem);
+}
+.cartao a { display: grid; gap: 0.75rem; text-decoration: none; }
+.cartao-foto {
+  display: block;
+  aspect-ratio: 4 / 5;
+  max-width: 100%;
+  background: var(--pedra);
+  overflow: hidden;
+}
+.cartao-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle(75% at 50% 50%);
+  transition: clip-path 700ms cubic-bezier(.2, .7, .2, 1), transform 700ms cubic-bezier(.2, .7, .2, 1);
+}
+.cartao a:hover .cartao-foto img,
+.cartao a:focus-visible .cartao-foto img {
+  clip-path: circle(41% at 50% 50%);
+  transform: scale(1.06);
+}
+.cartao-legenda { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1rem; }
+.cartao-titulo { font: 400 1.35rem/1.15 var(--f-titulo); }
+.cartao a:hover .cartao-titulo { color: var(--vinho); }
+
+/* ---- projeto */
+.projeto {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 2rem 4rem;
+}
+.projeto-texto { display: grid; gap: 1.75rem; align-content: start; min-width: 0; }
+.voltar { text-decoration: none; }
+.projeto h1, .sobre h1 {
+  font: 400 clamp(3rem, 8vw, 6.5rem)/0.95 var(--f-titulo);
+  letter-spacing: -0.015em;
+}
+.ficha { margin: 0; display: grid; border-top: 1px solid var(--linha); }
+.ficha > div {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 0.6rem;
+  border-bottom: 1px solid var(--linha);
+}
+.ficha dt { line-height: 1.6; }
+.ficha dd { margin: 0; }
+.texto { display: grid; gap: 1em; max-width: 62ch; }
+.ingles { max-width: 62ch; color: var(--suave); }
+.ingles summary {
+  cursor: pointer;
+  font: 400 0.75rem/1 var(--f-ficha);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-block: 0.5rem;
+}
+.ingles p + p, .ingles summary + p { margin-top: 1em; }
+.projeto-midia { display: grid; gap: clamp(0.75rem, 1.5vw, 1.25rem); min-width: 0; }
+.midia { margin: 0; background: var(--pedra); }
+.midia img, .midia video { width: 100%; height: auto; }
+
+.vizinhos {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--linha);
+  padding-block: 1.5rem 4rem;
+}
+.vizinhos a { display: grid; gap: 0.35rem; text-decoration: none; font: 400 1.6rem/1.1 var(--f-titulo); }
+.vizinhos a:last-child { text-align: right; }
+
+@media (min-width: 900px) {
+  .projeto, .sobre { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2.5rem, 5vw, 5rem); }
+  .projeto-texto, .sobre-texto { position: sticky; top: 1.5rem; align-self: start; }
+}
+
+/* ---- sobre */
+.sobre { display: grid; gap: 2.5rem; padding-block: 2rem 5rem; }
+.sobre-texto { display: grid; gap: 1.75rem; align-content: start; min-width: 0; }
+.contato a { text-decoration: none; }
+.sobre-fotos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; min-width: 0; }
+.sobre-fotos figure { margin: 0; background: var(--pedra); }
+.sobre-fotos figure:first-child { grid-column: 1 / -1; }
+.sobre-fotos img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+
+/* ---- rodapé */
+.rodape {
+  border-top: 1px solid var(--linha);
+  padding-block: 1.5rem 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+.rodape ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.rodape a { text-decoration: none; color: var(--tinta); text-transform: none; letter-spacing: 0.02em; }
+
+/* ---- celular */
+@media (max-width: 640px) {
+  .ano { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .ano-rotulo { position: static; }
+  .grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 0.75rem; }
+  .cartao-titulo { font-size: 1.1rem; }
+  .cartao-legenda { display: grid; }
+  .ficha > div { grid-template-columns: 6rem minmax(0, 1fr); }
+  .vizinhos a { font-size: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cartao-foto img { transition: none; }
+}
