@@ -6,7 +6,7 @@ dominio: nataliascarpati.com.br
 email: contato@nataliascarpati.com.br
 instagram: nataliascarpati
 linkedin: nataliascarpati
-logo: cargo:J2363303560041767025703199964745/logo-natsc-type-black-1.png
+logo: img/logo.png
 fotos-sobre:
   - img/sobre/01.jpg
   - img/sobre/02.jpg
