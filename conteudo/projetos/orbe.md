@@ -4,6 +4,7 @@ tipo: Espelho
 ano: 2020
 ordem: 1
 capa: img/orbe/01.jpg
+destaque: video/orbe/02.mp4
 midia:
   - video/orbe/02.mp4
   - img/orbe/03.jpg

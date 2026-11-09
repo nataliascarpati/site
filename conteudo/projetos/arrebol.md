@@ -4,6 +4,7 @@ tipo: Mobiliário externo
 ano: 2023
 ordem: 7
 capa: img/arrebol/01.jpg
+destaque: video/arrebol/02.mp4
 midia:
   - video/arrebol/02.mp4
   - img/arrebol/03.jpg

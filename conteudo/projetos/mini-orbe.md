@@ -4,6 +4,7 @@ tipo: Espelho
 ano: 2023
 ordem: 3
 capa: img/mini-orbe/01.jpg
+destaque: video/mini-orbe/02.mp4
 midia:
   - video/mini-orbe/02.mp4
   - img/mini-orbe/01.jpg

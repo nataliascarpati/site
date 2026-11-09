@@ -4,6 +4,7 @@ tipo: Espelho
 ano: 2023
 ordem: 2
 capa: img/objeto-a/01.jpg
+destaque: video/objeto-a/02.mp4
 midia:
   - video/objeto-a/02.mp4
   - img/objeto-a/03.jpg
