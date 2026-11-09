@@ -7,13 +7,13 @@ email: contato@nataliascarpati.com.br
 instagram: nataliascarpati
 linkedin: nataliascarpati
 fotos-sobre:
-  - cargo:G1676282891311315138103955947081/IMG_6071.jpg
-  - cargo:J1676282891237528161809117740617/IMG_6010.jpg
-  - cargo:W1676282891255974905882827292233/IMG_6018.jpg
-  - cargo:O1676282891200634673661698637385/IMG_5993.jpg
-  - cargo:H1676282891292868394030246395465/IMG_6058.jpg
-  - cargo:A1676282891274421649956536843849/IMG_6037.jpg
-  - cargo:U1676282891219081417735408189001/IMG_5997.jpg
+  - img/sobre/01.jpg
+  - img/sobre/02.jpg
+  - img/sobre/03.jpg
+  - img/sobre/04.jpg
+  - img/sobre/05.jpg
+  - img/sobre/06.jpg
+  - img/sobre/07.jpg
 ---
 Designer brasileira, Natalia Scarpati é conhecida por uma ampla linha de design de mobiliário externo e expressa sua paixão por pedras ornamentais brasileiras em um estilo próprio.
 

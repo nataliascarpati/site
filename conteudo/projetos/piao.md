@@ -4,10 +4,10 @@ tipo: Mesa auxiliar
 ano: 2023
 ordem: 5
 endereco-antigo: pião
-capa: cargo:K1679254064586697104596269530697/333b75309aa46d-VH360245920.jpg
+capa: img/piao/01.jpg
 midia:
-  - cargo:K1679254064586697104596269530697/333b75309aa46d-VH360245920.jpg
-  - cargo-video:F1679391601555155811199905955401/Mesa_de_Apoio_Piao_natalia_scarpati.mov
+  - img/piao/01.jpg
+  - video/piao/02.mp4
 ---
 Pião é uma mesa auxiliar que cumpre uma pluralidade de funções, resgata a memória afetiva do usuário e o convida a se divertir entre todas as suas possibilidades. Pode ser usada como champanheira, porta-toalhas, floreira e o que mais a imaginação permitir.
 

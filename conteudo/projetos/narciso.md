@@ -3,11 +3,11 @@ titulo: Narciso
 tipo: Abajur
 ano: 2023
 ordem: 1
-capa: cargo:Q1676157451459365553192335572553/460A0397_10x15cm-copy.jpg
+capa: img/narciso/01.jpg
 midia:
-  - cargo:H1676157451182664392086692298313/460A0074_10x15cm.jpg
-  - cargo:T1676157451477812297266045124169/460A0397_10x15cm.jpg
-  - cargo:X1676157451440918809118626020937/460A0370_10x15cm.jpg
+  - img/narciso/02.jpg
+  - img/narciso/03.jpg
+  - img/narciso/04.jpg
 ---
 Narciso é um abajur escultórico e provocador. É uma celebração da dualidade especular na pedra ornamental. A luminária é composta por dois módulos de rocha refletidos: de um lado encontramos a iluminação com uma esfera luminosa e do outro temos um corte circular de mesma dimensão.
 

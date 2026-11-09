@@ -4,12 +4,12 @@ tipo: Espelho
 ano: 2025
 ordem: 1
 material: Quartzito Moulin Rouge
-capa: cargo:W2363286607871344912173165444681/269A1528.jpg
+capa: img/espelho-dual/01.jpg
 midia:
-  - cargo:U2363286607908238400320584547913/269A1576-copiar.jpg
-  - cargo:T2363286607926685144394294099529/269A1723.jpg
-  - cargo:U2363286607945131888468003651145/269A1844.jpg
-  - cargo:W2363286607871344912173165444681/269A1528.jpg
+  - img/espelho-dual/02.jpg
+  - img/espelho-dual/03.jpg
+  - img/espelho-dual/04.jpg
+  - img/espelho-dual/01.jpg
 ---
 Os espelhos Orbe e Dual refletem o compromisso com a sustentabilidade e o design consciente. Criados para maximizar o aproveitamento da chapa de quartzito, suas formas complementares transformam cada fragmento em parte essencial do ciclo criativo, reduzindo ao máximo o desperdício. Essa abordagem reforça nosso alinhamento com os Objetivos de Desenvolvimento Sustentável (ODS 12), promovendo padrões responsáveis de produção e consumo.
 

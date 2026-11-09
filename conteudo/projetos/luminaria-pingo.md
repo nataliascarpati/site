@@ -4,12 +4,12 @@ tipo: Luminária
 ano: 2025
 ordem: 2
 material: Quartzito e tecido natural
-capa: cargo:J2363298432123615695553493990985/Copia-de-natalia_scarpati_pingo_lamp.jpg
+capa: img/luminaria-pingo/01.jpg
 midia:
-  - cargo:J2363298432123615695553493990985/Copia-de-natalia_scarpati_pingo_lamp.jpg
-  - cargo:M2363298432197402671848332197449/DSC09398.jpg
-  - cargo:T2363298432215849415922041749065/DSC09488.jpg
-  - cargo:U2363298432142062439627203542601/DSC09366.jpg
+  - img/luminaria-pingo/01.jpg
+  - img/luminaria-pingo/02.jpg
+  - img/luminaria-pingo/03.jpg
+  - img/luminaria-pingo/04.jpg
 ---
 A luminária Pingo provoca um diálogo entre o tempo humano e o tempo da natureza, inspirado na expressão "água mole em pedra dura, tanto bate até que fura".
 

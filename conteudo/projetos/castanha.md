@@ -3,9 +3,9 @@ titulo: Castanha
 tipo: Mesa
 ano: 2023
 ordem: 6
-capa: cargo:L1679258131134534665719504174665/mesa_castanha_natalia_scarpati.jpg
+capa: img/castanha/01.jpg
 midia:
-  - cargo:L1679258131134534665719504174665/mesa_castanha_natalia_scarpati.jpg
+  - img/castanha/01.jpg
 ---
 A mesa com uma base curva orgânica, forma que remete à castanha de caju, surge para atender às tendências do mercado de uma forma autoral e intrigante.
 
