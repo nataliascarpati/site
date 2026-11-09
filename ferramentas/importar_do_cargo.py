@@ -62,6 +62,29 @@ def main():
                 print("ok", novo)
                 return novo
 
+            # A logo fica em PNG transparente, sem margens sobrando.
+            m_logo = re.search(r"^logo: cargo:([A-Z]\d+)/(\S+)$", texto, re.M)
+            if m_logo:
+                hash_, arquivo = m_logo.groups()
+                local = os.path.join(tmp, "logo_" + arquivo)
+                baixar(f"{FREIGHT}/w/1600/i/{hash_}/{arquivo}", local)
+                from PIL import Image
+                with Image.open(local) as im:
+                    im = im.convert("RGBA")
+                    alfa = im.getchannel("A")
+                    if alfa.getextrema() == (255, 255):  # fundo branco: recorta pelo desenho
+                        from PIL import ImageOps
+                        caixa = ImageOps.invert(im.convert("L")).point(lambda v: 255 if v > 20 else 0).getbbox()
+                    else:
+                        caixa = alfa.getbbox()
+                    im = im.crop(caixa)
+                    im.thumbnail((900, 900), Image.LANCZOS)
+                    im.save(os.path.join(RAIZ, "img", "logo.png"), optimize=True)
+                texto = texto.replace(m_logo.group(0), "logo: img/logo.png")
+                with open(arq, "w", encoding="utf-8") as f:
+                    f.write(texto)
+                print("ok img/logo.png")
+
             novo_texto = REF.sub(trocar, texto)
             if novo_texto != texto:
                 with open(arq, "w", encoding="utf-8") as f:

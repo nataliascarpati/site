@@ -130,6 +130,12 @@ def pagina(site, prefixo, titulo, descricao, corpo, canonico, imagem=None, atual
         marca = ' aria-current="page"' if chave == atual else ""
         nav.append(f'<a href="{href}"{marca}>{rotulo}</a>')
     nav.append(f'<a href="mailto:{site["email"]}">Contato</a>')
+    logo = site.get("logo")
+    if logo:
+        marca = (f'<img class="logo" src="{url_midia(logo, prefixo, 800)}" '
+                 f'alt="{html.escape(site["nome"])}" width="220" height="100">')
+    else:
+        marca = html.escape(site["nome"])
     return f"""<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -151,7 +157,7 @@ def pagina(site, prefixo, titulo, descricao, corpo, canonico, imagem=None, atual
 </head>
 <body>
 <header class="topo">
-  <a class="marca" href="{prefixo}./">{html.escape(site['nome'])}</a>
+  <a class="marca" href="{prefixo}./">{marca}</a>
   <nav class="menu" aria-label="Principal">{''.join(nav)}</nav>
 </header>
 <main>
@@ -219,42 +225,27 @@ def montar():
             shutil.copytree(origem, os.path.join(SAIDA, pasta_midia))
 
     # --- início
-    anos = []
-    for p in projetos:
-        if not anos or anos[-1][0] != p["ano"]:
-            anos.append((p["ano"], []))
-        anos[-1][1].append(p)
-
-    blocos = []
-    primeiro = True
-    for ano, lista in anos:
-        cartoes = []
-        for p in lista:
-            carregar = "eager" if primeiro else "lazy"
-            primeiro = False
-            img = tag_imagem(p["capa"], "", f"{p['tipo']} {p['titulo']}, de Natalia Scarpati",
-                             carregar=carregar,
-                             tamanhos="(min-width: 1100px) 26vw, (min-width: 640px) 40vw, 50vw")
-            cartoes.append(f"""<li class="cartao">
+    pecas = []
+    for n, p in enumerate(projetos):
+        alt = f"{p['tipo']} {p['titulo']}, de Natalia Scarpati"
+        destaque = p.get("destaque") or p["capa"]
+        if eh_video(destaque):
+            midia = (f'<video src="{url_midia(destaque, "")}" autoplay muted loop playsinline '
+                     f'preload="metadata" aria-label="{html.escape(alt)}"></video>')
+        else:
+            midia = tag_imagem(destaque, "", alt, carregar="eager" if n < 6 else "lazy",
+                               tamanhos="(min-width: 1100px) 33vw, 50vw")
+        pecas.append(f"""<li class="peca">
   <a href="{p['slug']}/">
-    <span class="cartao-foto">{img}</span>
-    <span class="cartao-legenda"><span class="cartao-titulo">{html.escape(p['titulo'])}</span><span class="cartao-tipo">{html.escape(p['tipo'])}</span></span>
+    <span class="peca-midia">{midia}</span>
+    <span class="peca-legenda"><span class="peca-titulo">{html.escape(p['titulo'])}</span><span class="peca-tipo">{html.escape(p['tipo'])}</span></span>
   </a>
 </li>""")
-        blocos.append(f"""<section class="ano" aria-labelledby="ano-{ano}">
-  <h2 class="ano-rotulo" id="ano-{ano}">{ano}</h2>
-  <ul class="grade">
-{chr(10).join(cartoes)}
-  </ul>
-</section>""")
 
-    corpo_inicio = f"""<section class="abertura">
-  <p class="abertura-frase">{html.escape(site['apresentacao'])}</p>
-  <p class="abertura-dados">{len(projetos)} projetos · {anos[-1][0]}–{anos[0][0]}</p>
-</section>
-<div class="indice">
-{chr(10).join(blocos)}
-</div>"""
+    corpo_inicio = f"""<h1 class="oculto">{html.escape(site['nome'])}: projetos</h1>
+<ul class="mosaico">
+{chr(10).join(pecas)}
+</ul>"""
     gravar("index.html", pagina(site, "", site["nome"], site["descricao"], corpo_inicio, "",
                                 url_absoluta(projetos[0]["capa"], dominio), "projetos"))
 
@@ -334,8 +325,8 @@ def montar():
     gravar("index/index.html", redirecionamento("../", f"https://{dominio}/"))
 
     # --- 404
-    corpo_404 = """<section class="abertura">
-  <p class="abertura-frase">Esta página não existe mais.</p>
+    corpo_404 = """<section class="aviso">
+  <h1>Esta página não existe mais.</h1>
   <p><a class="voltar" href="/">← Ver todos os projetos</a></p>
 </section>"""
     gravar("404.html", pagina(site, "/", "Página não encontrada", site["descricao"], corpo_404, "404.html"))
